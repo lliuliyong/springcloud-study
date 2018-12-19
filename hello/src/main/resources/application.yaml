@@ -1,5 +1,6 @@
 server:
   port: 8881
+  address: 127.0.0.1
 management:
   endpoints:
     web:
@@ -11,4 +12,6 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:1111/eureka/
+      defaultZone: http://peer1:1111/eureka/,http://peer1:1112/eureka/
+  instance:
+    preferIpAddress: true

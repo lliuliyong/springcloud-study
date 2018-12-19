@@ -32,7 +32,7 @@ public class HelloController {
             logger.info("/hello,service:{}", s);
         });
         serviceInstances.forEach(serviceInstance -> {
-            logger.info("/hello, host:{},serviceId:{},port{}", serviceInstance.getHost(), serviceInstance.getServiceId(), serviceInstance.getPort());
+            logger.info("/hello, host:{},serviceId:{},port:{}", serviceInstance.getHost(), serviceInstance.getServiceId(), serviceInstance.getPort());
         });
         return "Hello World";
     }
