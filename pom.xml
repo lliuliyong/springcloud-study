@@ -23,6 +23,7 @@
 	<modules>
         <module>eureka-server</module>
         <module>hello</module>
+        <module>ribbon-consumer</module>
     </modules>
 
     <build>
