@@ -1,7 +1,7 @@
 package com.leo.ribbonconsumer.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -12,11 +12,12 @@ import org.springframework.web.client.RestTemplate;
  */
 @RestController
 public class ConsumerController {
+    @LoadBalanced
     @Autowired
     RestTemplate restTemplate;
 
     @RequestMapping(value = "/ribbon-consumer")
     public String helloConsumer() {
-        return restTemplate.getForObject("https://HELLO-SERVICE/hello", String.class);
+        return restTemplate.getForObject("http://HELLO-SERVICE/hello", String.class);
     }
 }

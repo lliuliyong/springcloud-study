@@ -1,6 +1,5 @@
 server:
   port: 8881
-  address: 127.0.0.1
 management:
   endpoints:
     web:
