@@ -1,7 +1,8 @@
 spring:
-  profiles: peer2
   application:
     name: peer2
+  profiles:
+    active: peer2
 eureka:
   instance:
     hostname: peer2

@@ -1,0 +1,21 @@
+server:
+  port: 8888
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: \https://github.com/cloud-native-java/config-server-configuration-repository
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://peer1:1111/eureka/,http://peer1:1112/eureka/
+  instance:
+    preferIpAddress: true
