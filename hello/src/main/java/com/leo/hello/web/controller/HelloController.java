@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author liyong
@@ -26,7 +28,7 @@ public class HelloController {
     private String serviceName;
 
     @RequestMapping("/hello")
-    public String index() {
+    public String index() throws InterruptedException {
         List<ServiceInstance> serviceInstances = client.getInstances(serviceName);
         client.getServices().forEach(s -> {
             logger.info("/hello,service:{}", s);
@@ -34,6 +36,9 @@ public class HelloController {
         serviceInstances.forEach(serviceInstance -> {
             logger.info("/hello, host:{},serviceId:{},port:{}", serviceInstance.getHost(), serviceInstance.getServiceId(), serviceInstance.getPort());
         });
+        int sleepTime = new Random().nextInt(3000);
+        logger.info("sleepTime:" + sleepTime);
+        TimeUnit.SECONDS.sleep(sleepTime);
         return "Hello World";
     }
 }
